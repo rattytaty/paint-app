@@ -12,3 +12,5 @@ class ToolState {
         this.tool = tool
     }
 }
+
+export default new ToolState()

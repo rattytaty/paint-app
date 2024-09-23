@@ -1,6 +1,10 @@
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
+import {observer} from "mobx-react-lite";
+import canvasState from "../store/CanvasState.ts";
+import toolState from "../store/ToolState.ts";
+import {Brush} from "../tools/Brush.ts";
 
-const Canvas = () => {
+export const Canvas = observer(() => {
 
     const [canvasSize, setCanvasSize] = useState({
         height: window.innerHeight,
@@ -19,8 +23,15 @@ const Canvas = () => {
     }, []);
 
 
-    return <canvas style={{width: "98vw", height: "99vh", border: "1px solid black"}}
-    ></canvas>
-};
+    const canvasRef = useRef(null)
+    useEffect(() => {
+        canvasState.setCanvas(canvasRef.current)
+        toolState.setTool(new Brush(canvasRef.current))
+    }, []);
 
-export default Canvas;
+    return <canvas ref={canvasRef}
+                   width={canvasSize.width}
+                   height={canvasSize.height}
+                   style={{border: "1px solid black"}}
+    ></canvas>
+});

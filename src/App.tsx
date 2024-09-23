@@ -1,4 +1,5 @@
-import Canvas from "./components/Canvas.tsx";
+import {Canvas} from "./components/Canvas.tsx";
+
 
 function App() {
 
