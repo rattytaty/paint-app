@@ -21,6 +21,7 @@ export class Rectangle extends Tool {
         this.context.beginPath()
         this.startX = event.pageX - event.target.offsetLeft
         this.startY = event.pageY - event.target.offsetTop
+        this.saved = this.canvas.toDataURL()
     }
 
     mouseMoveHandler(event) {
@@ -30,7 +31,7 @@ export class Rectangle extends Tool {
             const width = currentX - this.startX
             const height = currentY - this.startY
             this.draw(  this.startX, this.startY,width,height)
-            this.saved = this.canvas.toDataURL()
+
         }
     }
 
@@ -44,6 +45,7 @@ export class Rectangle extends Tool {
         img.onload = ()=> {
             this.context.clearRect(0,0, this.canvas.width, this.canvas.height)
             this.context.drawImage(img, 0,0, this.canvas.width, this.canvas.height)
+            this.context.beginPath()
             this.context.rect(x, y, w, h)
             this.context.fill()
             this.context.stroke()

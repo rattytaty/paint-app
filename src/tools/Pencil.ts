@@ -2,7 +2,7 @@ import {Tool} from "./Tool.ts";
 import { MouseEvent } from 'react'
 
 
-export class Brush extends Tool {
+export class Pencil extends Tool {
 
     constructor(canvas: HTMLCanvasElement) {
         super(canvas);
@@ -17,22 +17,18 @@ export class Brush extends Tool {
     }
 
     mouseDownHandler(event) {
-        console.log(event)
-
         this.isMouseDown = true
         this.context.beginPath()
         this.context.moveTo(event.pageX - event.target.offsetLeft, event.pageY - event.target.offsetTop)
     }
 
     mouseMoveHandler(event) {
-        //console.log(event)
         if (this.isMouseDown) {
             this.draw(event.pageX - event.target.offsetLeft, event.pageY - event.target.offsetTop)
         }
     }
 
     mouseUpHandler(event) {
-        //console.log(event)
         this.isMouseDown = false
     }
 
