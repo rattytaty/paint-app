@@ -11,11 +11,11 @@ class ToolState {
         this.tool = tool
     }
 
-    setStrokeColor(color) {
+    setStrokeStyle(color:string) {
         this.tool.strokeStyle = color
     }
 
-    setFillColor(color) {
+    setFillColor(color:string) {
         this.tool.fillColor = color
     }
 

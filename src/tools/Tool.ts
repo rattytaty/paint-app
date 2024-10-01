@@ -5,16 +5,17 @@ export class Tool {
     isMouseDown:boolean
 
     constructor(canvas: HTMLCanvasElement) {
+        this.isMouseDown=false
         this.canvas = canvas
-        this.context = canvas.getContext("2d")
+        this.context = canvas.getContext("2d")!
        this.destroyEvents()
     }
 
-    set fillColor(color){
+    set fillColor(color:string){
         this.context.fillStyle = color
     }
 
-    set strokeColor(color){
+    set strokeStyle(color:string){
         this.context.strokeStyle = color
     }
     set lineWidth(width:number){

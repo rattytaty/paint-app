@@ -1,5 +1,4 @@
 import {Tool} from "./Tool.ts";
-import { MouseEvent } from 'react'
 
 
 export class Pencil extends Tool {
