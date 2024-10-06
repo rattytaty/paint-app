@@ -2,8 +2,8 @@ import {makeAutoObservable} from "mobx";
 
 class CanvasState {
     canvas: HTMLCanvasElement | null = null
-    actionsList :number[]= []
-    canceledActionsList:string[] = []
+    actionsList: string[] = []
+    canceledActionsList: string[] = []
 
     constructor() {
         makeAutoObservable(this)
@@ -13,8 +13,13 @@ class CanvasState {
         this.canvas = canvas
     }
 
-    pushToActionsList(action:string){}
-    pushToCanceledActionsList(action:string){}
+    pushToActionsList(action: string) {
+        this.actionsList.push(action)
+    }
+
+    pushToCanceledActionsList(action: string) {
+        this.canceledActionsList.push(action)
+    }
 }
 
 export default new CanvasState()
